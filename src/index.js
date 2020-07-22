@@ -1,4 +1,13 @@
-import { KReact, Component } from '../packages/index'
+import { KReact, Component as KComponent} from '../packages/index'
+const React = require('react')
+const ReactDOM = require('react-dom')
+if (false) {
+  var Component = React.Component
+  var render = ReactDOM.render
+} else {
+  var Component = KComponent
+  var render = KReact.render
+}
 
 class Square extends Component {
   render() {
@@ -143,4 +152,4 @@ function calculateWinner(squares) {
   return null
 }
 
-KReact.render(<Game />, document.getElementById('root'))
+render(<Game />, document.getElementById('root'))
