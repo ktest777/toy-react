@@ -55,9 +55,13 @@ export class Component {
   setState(state) {
     let merge = (oldState, newState) => {
       for(let x in newState) {
-        if(typeof newState[x] === 'object') {
+        if(typeof newState[x] === 'object' && newState[x] !== null) {
           if(typeof oldState[x] !== 'object') {
-            oldState[x] = {}
+            if(newState[x] instanceof Array) {
+              oldState[x] = []
+            } else {
+              oldState[x] = {}
+            }
           }
           merge(oldState[x], newState[x])
         } else {
@@ -116,6 +120,9 @@ export const KReact = {
         if (typeof child === 'object' && child instanceof Array) {
           insertChildren(child)
         } else {
+          if (child === null || child === void 0) {
+            child = ''
+          }
           if (
             !(child instanceof Component) &&
             !(child instanceof ElementWrapper) &&
@@ -126,6 +133,7 @@ export const KReact = {
           if (Object.prototype.toString.call(child) == '[object String]') {
             child = new TextWrapper(child)
           }
+          
           element.appendChild(child)
         }
       }
