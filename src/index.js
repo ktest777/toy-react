@@ -1,9 +1,10 @@
 import { KReact, Component as KComponent} from '../packages/index'
-const React = require('react')
-const ReactDOM = require('react-dom')
+import { h, render as prender, Component as PComponent } from 'preact';
+
 if (false) {
-  var Component = React.Component
-  var render = ReactDOM.render
+  var Component = PComponent
+  var render = prender
+  KReact.createElement = h
 } else {
   var Component = KComponent
   var render = KReact.render

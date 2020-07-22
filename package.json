@@ -19,7 +19,6 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "preact": "^10.4.6"
   }
 }
